@@ -63,15 +63,15 @@ Non-JAR binaries are included into the Maven projects by adding them as a resour
   </resource>
 </resources>
 ```
-Notice that I added `Fiji.app` to the beginning of the target path. This is used to signal that these are resources which should be unpacked into Fiji. This is done on [this scijava-maven-plugin branch](https://github.com/juglab/scijava-maven-plugin/tree/extract-resources), it contains a new Mojo one can call from Maven via ` mvn -Dscijava.app.directory=/YOUR/LOCAL/Fiji.app scijavaclone:extract-resources`.
+Notice that I added `Fiji.app` to the beginning of the target path. This is used to signal that these are resources which should be unpacked into Fiji. This is done on [this scijava-maven-plugin branch](https://github.com/juglab/scijava-maven-plugin/tree/extract-resources), it contains a new Mojo one can call from Maven via ` mvn -Dscijava.app.directory=/YOUR/LOCAL/Fiji.app scijavaclone:extract-resources`. It's automatically executed during the `install` goal.
 
-### How does one update an update site?
-The idea (and this might not work because of [this issue](https://stackoverflow.com/questions/45041888/how-can-i-depend-on-a-library-with-transitive-dependencies-which-are-adjusted-by)) is that the update sites determine the dependencies and the specific versions will be set by the `pom-scijava` parent of your local installation POM. Update sites could also name specific versions if they need to. There are further tests needed to determine if Maven does what we need in this scenario.
+### How does the update work?
+The idea (which might not work because of [this issue](https://stackoverflow.com/questions/45041888/how-can-i-depend-on-a-library-with-transitive-dependencies-which-are-adjusted-by)) is that the update sites specify the dependencies and the `pom-scijava` parent of your local installation POM specifies the exact versions of the dependencies to be downloaded. An update site could of course also specify a dependency version itself. Meaning, Fiji would be updated every time there is a new `pom-scijava` version or a new update site version on Maven.
 
 #### Releases vs. snapshots
 The updater would look for new versions of `pom-scijava` and one there is a new version, rebuild the application. The user could also enable a snapshot mode where the application would also update in case there is a new `pom-scijava` snapshot version to get something like a nightly build.
 
-#### If your update site project is maven maintained
+#### How to update the update site of a Maven project
 In this case you would probably add the version of your project to the `pom-scijava` BOM and update it there. If you don't want that, your update site POM would point to a specific version of your plugin etc.
 
 This requires that people can easily deploy their project to a maven server. This is not yet possible. For this prototype we have this maven test repository where anyone can upload to:
@@ -83,18 +83,22 @@ This requires that people can easily deploy their project to a maven server. Thi
 </repository>
 ```
 
-#### If your update site project is not maven maintained
-In this case the ImageJ uploader chould build a POM including all files you added to ImageJ as resources and upload that to our Maven server. This is not implemented at all yet. It could also be used to migrate existing update sites in the known format into Maven update sites.
+#### How to update the update site of a non-Maven project
+In this case the ImageJ uploader could build a POM including all files the user added to ImageJ as resources and upload that to our Maven server. This is not implemented at all yet. It could also be used to migrate existing update sites from the known format into Maven update sites.
 
 ## So can you build a whole Fiji from Maven?
 No.
-The installer will ask you for a working ImageJ installation at the beginning and will then delete all subfolders except `java/`. This keeps the JRE and the executable in place, this prorotype cannot get/build them.
+The installer will ask you for a working ImageJ installation at the beginning and will then delete all subfolders except `java/`. This keeps the JRE and the executable in place, this prototype cannot get/build them.
 
 ## Why are there so many GIT commands printed to the console?
 In the background I use JGIT to manage the files / compare the local installation and an updated installation etc.. I'm sure there is a better (and more performant) way to do this, but since I wrote the GIT part earlier with a different use case in mind, this was the easiest to just use for this prototype.
+If you want to look at the branches which are created during this process, you can see and compare them in the Updater `Maintainer` tab (click `Manage sessions`).
 
 ## What about local changes to the installation?
 One would have to track what came via Maven (ideally from which dependency) to recognize locally modified /  changed files. The current GIT versioning can do that to some extend (not the dependency source part), but I might not find time to work on in this early prototype stage / before we know if the whole project will lead somewhere.
+
+## Open TODOs for the protype stage
+You cannot yet change versions of update sites / the local installation, the updater is not yet recognizing new versions of update sites. You can only install and uninstall them at the moment.
 
 ## Development resources
 Here are all the repositories I messed with to make this prototype work:
