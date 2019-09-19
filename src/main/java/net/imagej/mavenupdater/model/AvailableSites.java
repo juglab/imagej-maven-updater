@@ -7,7 +7,7 @@ public class AvailableSites {
 	public static List<UpdateSite> get() {
 		List<UpdateSite> sites = new ArrayList<>();
 		addMandatorySite(sites, "net.imagej", "updatesite-imagej", "0.1.0-SNAPSHOT", "pom");
-		addSite(sites, "net.imagej", "updatesite-ij1", "0.1.0-SNAPSHOT", "pom");
+		addMandatorySite(sites, "net.imagej", "updatesite-ij1", "0.1.0-SNAPSHOT", "pom");
 		addSite(sites, "net.imagej", "updatesite-fiji", "0.1.0-SNAPSHOT", "pom");
 		addSite(sites, "net.imagej", "updatesite-csbdeep", "0.1.0-SNAPSHOT", "pom");
 		return sites;

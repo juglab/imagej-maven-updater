@@ -15,8 +15,8 @@
    version="1.1"
    id="svg8"
    inkscape:export-filename="/home/random/Development/imagej/project/updater/imagej-maven-updater/src/main/resources/icons/updated.png"
-   inkscape:export-xdpi="86.120003"
-   inkscape:export-ydpi="86.120003"
+   inkscape:export-xdpi="43.060001"
+   inkscape:export-ydpi="43.060001"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="updated.svg">
   <defs
@@ -29,7 +29,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="159.32377"
+     inkscape:cx="6.1094843"
      inkscape:cy="-34.692928"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -51,7 +51,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>

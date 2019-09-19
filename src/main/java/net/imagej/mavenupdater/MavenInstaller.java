@@ -84,10 +84,10 @@ public class MavenInstaller extends AbstractMavenApp {
 	}
 
 	public static void main(String... args) throws IOException {
-		File destination = new File("/home/random/Fiji");
-		FileUtils.deleteDirectory(destination);
-		destination.mkdirs();
-		new MavenInstaller().install(new File("/home/random/Programs/Fiji.app"), destination);
-//		new MavenInstaller().start();
+//		File destination = new File("/home/random/Fiji");
+//		FileUtils.deleteDirectory(destination);
+//		destination.mkdirs();
+//		new MavenInstaller().install(new File("/home/random/Programs/Fiji.app"), destination);
+		new MavenInstaller().start();
 	}
 }
