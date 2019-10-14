@@ -46,6 +46,8 @@ public class GitCommands {
 	public static void commitCurrentStatus(Git git) throws GitAPIException {
 		//NOTE: not doing `git add .` because it's incredibly slow
 		if(debug) System.out.println("git status");
+		//TODO
+		//find out if git commit -
 		Status status = git.status().call();
 		Set<String> toAdd = new HashSet<>();
 		Set<String> toRemove = new HashSet<>();

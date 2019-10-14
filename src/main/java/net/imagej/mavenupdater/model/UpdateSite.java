@@ -1,6 +1,7 @@
 package net.imagej.mavenupdater.model;
 
 import org.apache.maven.model.Dependency;
+import org.apache.maven.model.Model;
 
 public class UpdateSite extends Dependency {
 	private boolean active;
@@ -11,6 +12,8 @@ public class UpdateSite extends Dependency {
 	private boolean outOfDate;
 
 	private String availableVersion;
+
+	private Model model;
 
 	public UpdateSite(String groupId, String artifactId, String version, String type) {
 		setGroupId(groupId);
@@ -33,6 +36,13 @@ public class UpdateSite extends Dependency {
 		this.mandatory = site.mandatory;
 		this.outOfDate = site.outOfDate;
 		this.availableVersion = site.availableVersion;
+	}
+
+	public UpdateSite(Model model) {
+		setModel(model);
+		setVersion(model.getVersion());
+		setArtifactId(model.getArtifactId());
+		setGroupId(model.getGroupId());
 	}
 
 	public boolean isActive() {
@@ -84,5 +94,13 @@ public class UpdateSite extends Dependency {
 	public boolean equals(Object o) {
 		UpdateSite other = (UpdateSite) o;
 		return getGroupId().equals(other.getGroupId()) && getArtifactId().equals(other.getArtifactId());
+	}
+
+	public Model getModel() {
+		return model;
+	}
+
+	public void setModel(Model model) {
+		this.model = model;
 	}
 }

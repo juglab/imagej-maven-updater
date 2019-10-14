@@ -16,7 +16,7 @@ public class AbstractMavenAppWindow extends JFrame {
 		setContentPane(main);
 	}
 
-	List<UpdateSite> getAvailableUpdateSites() {
+	List<UpdateSite> getAvailableUpdateSites()  {
 		return parent.getAvailableUpdateSites();
 	}
 

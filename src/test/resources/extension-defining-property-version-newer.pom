@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.scijava</groupId>
+        <artifactId>pom-scijava</artifactId>
+        <version>27.0.1</version>
+    </parent>
+
+    <groupId>ij-env-test</groupId>
+    <artifactId>extension-defining-property-version-newer</artifactId>
+    <packaging>pom</packaging>
+    <version>1</version>
+
+    <properties>
+        <imglib2.version>5.8.0</imglib2.version>
+    </properties>
+
+    <name>Extension defining a dependency version via property</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>net.imglib2</groupId>
+            <artifactId>imglib2</artifactId>
+        </dependency>
+    </dependencies>
+</project>

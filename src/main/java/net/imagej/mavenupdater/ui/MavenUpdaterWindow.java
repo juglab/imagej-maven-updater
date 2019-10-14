@@ -3,8 +3,8 @@ package net.imagej.mavenupdater.ui;
 import net.imagej.mavenupdater.MavenUpdater;
 import net.imagej.mavenupdater.model.LocalInstallation;
 import net.imagej.mavenupdater.model.UpdateSite;
-import net.imagej.mavenupdater.ui.model.SessionsTableModel;
 import net.imagej.mavenupdater.ui.model.LocalUpdateSiteTableModel;
+import net.imagej.mavenupdater.ui.model.SessionsTableModel;
 import net.imagej.mavenupdater.versioning.VersioningService;
 import net.miginfocom.swing.MigLayout;
 
@@ -110,7 +110,8 @@ public class MavenUpdaterWindow extends AbstractMavenAppWindow {
 	}
 
 	private void editSites() {
-		List<UpdateSite> sites = getAvailableAndLocalUpdateSites();
+		List<UpdateSite> sites = null;
+		sites = getAvailableAndLocalUpdateSites();
 		SitesDialog sitesDialog = new SitesDialog(this, sites);
 		sitesDialog.setLocationRelativeTo(this);
 		sitesDialog.setModal(true);

@@ -84,7 +84,11 @@ public class MavenUpdater extends AbstractMavenApp {
 			getVersioning().deleteSession("update-inprogress");
 			getVersioning().openSession("local");
 		} else {
+			long startTime = System.nanoTime();
 			getVersioning().openSession("local");
+			long endTime = System.nanoTime();
+			long timeElapsed = endTime - startTime;
+			System.out.println("Execution time in milliseconds: " + timeElapsed / 1000000);
 			getVersioning().deleteSession("update-inprogress");
 		}
 	}

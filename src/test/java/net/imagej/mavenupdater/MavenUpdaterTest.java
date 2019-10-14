@@ -20,6 +20,7 @@ public class MavenUpdaterTest {
 	public TemporaryFolder destinationFolder = new TemporaryFolder();
 
 	@Test
+	//FIXME this test is throwing errors in the log but not actually failing
 	public void listLocalUpdateSites() throws Exception {
 
 		//install
@@ -43,6 +44,7 @@ public class MavenUpdaterTest {
 	}
 
 	@Test
+	//FIXME this test is throwing errors in the log but not actually failing
 	public void addUpdateSite() throws Exception {
 
 		//install

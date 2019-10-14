@@ -6,8 +6,6 @@ import net.imagej.mavenupdater.util.MavenUpdaterUtil;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class InstallerComponentsView extends JPanel {
@@ -18,12 +16,14 @@ public class InstallerComponentsView extends JPanel {
 	public InstallerComponentsView(MavenInstallerWindow parent) {
 		setLayout(new MigLayout("fill"));
 		add(new JLabel("<html><h2>Update Site selection</h2></html>"), "wrap, span");
-		List<UpdateSite> sites = MavenUpdaterUtil.copy(parent.getAvailableUpdateSites());
+		List<UpdateSite> sites = null;
+		sites = MavenUpdaterUtil.copy(parent.getAvailableUpdateSites());
 		createComponentsChoice(sites);
 		cancelBtn = new JButton("Cancel");
 		cancelBtn.addActionListener(e ->  parent.dispose());
 		confirmBtn = new JButton("OK");
-		confirmBtn.addActionListener( e-> new Thread(() -> parent.componentsChosen(sites)).start());
+		List<UpdateSite> finalSites = sites;
+		confirmBtn.addActionListener(e-> new Thread(() -> parent.componentsChosen(finalSites)).start());
 		JPanel south = new JPanel();
 		south.add(confirmBtn);
 		south.add(cancelBtn);

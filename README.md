@@ -106,5 +106,5 @@ Here are all the repositories I messed with to make this prototype work:
 - [Fiji repo including resources](https://github.com/juglab/fiji/tree/including-resources)
 - [scijava-maven-plugin-clone extracting resources](https://github.com/juglab/scijava-maven-plugin/tree/extract-resources)
 - [updatesite-imagej](https://github.com/juglab/updatesite-imagej)
-- [updatesite-ij1](https://github.com/juglab/updatesite-ij1])
+- [updatesite-ij1](https://github.com/juglab/updatesite-ij1)
 - [updatesite-fiji](https://github.com/juglab/updatesite-fiji)

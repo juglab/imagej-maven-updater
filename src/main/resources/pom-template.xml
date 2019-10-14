@@ -9,69 +9,12 @@
 		<groupId>org.scijava</groupId>
 		<artifactId>pom-scijava</artifactId>
 		<version>27.0.1</version>
-		<relativePath />
 	</parent>
 
 	<groupId>my.local</groupId>
-	<artifactId>fiji</artifactId>
+	<artifactId>environment</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
-
 	<packaging>pom</packaging>
-	<name>My Local Fiji</name>
-	<description>My local Fiji installation</description>
-	<url>https://imagej.net/</url>
-	<inceptionYear>2019</inceptionYear>
-	<organization>
-		<name>CSBD | MPI-CBG</name>
-		<url>https://csbdresden.de/</url>
-	</organization>
-	<licenses>
-		<license>
-			<name>Simplified BSD License</name>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-
-	<developers>
-		<developer>
-			<id>None</id>
-			<name>None</name>
-			<roles>
-				<role>founder</role>
-				<role>lead</role>
-				<role>developer</role>
-				<role>debugger</role>
-				<role>reviewer</role>
-				<role>support</role>
-				<role>maintainer</role>
-			</roles>
-		</developer>
-	</developers>
-	<contributors>
-		<contributor>
-			<name>None</name>
-		</contributor>
-	</contributors>
-
-	<mailingLists>
-		<mailingList>
-			<name>Image.sc Forum</name>
-			<archive>https://forum.image.sc/tags/imagej</archive>
-		</mailingList>
-	</mailingLists>
-
-	<issueManagement>
-		<system>GitHub Issues</system>
-		<url>https://github.com/fiji/fiji/issues</url>
-	</issueManagement>
-	<ciManagement>
-		<system>None</system>
-	</ciManagement>
-
-	<properties>
-		<license.licenseName>bsd_2</license.licenseName>
-		<license.copyrightOwners>XXX</license.copyrightOwners>
-	</properties>
 
 	<repositories>
 		<repository>
@@ -83,33 +26,6 @@
 			<url>https://dais-maven.mpi-cbg.de/repository/test-maven/</url>
 		</repository>
 	</repositories>
-
-	<!--<dependencies>-->
-		<!--<dependency>-->
-			<!--<groupId>net.imagej</groupId>-->
-			<!--<artifactId>updatesite-imagej</artifactId>-->
-			<!--<version>0.1.0-SNAPSHOT</version>-->
-			<!--<type>pom</type>-->
-		<!--</dependency>-->
-		<!--<dependency>-->
-			<!--<groupId>net.imagej</groupId>-->
-			<!--<artifactId>updatesite-ij1</artifactId>-->
-			<!--<version>0.1.0-SNAPSHOT</version>-->
-			<!--<type>pom</type>-->
-		<!--</dependency>-->
-		<!--<dependency>-->
-			<!--<groupId>net.imagej</groupId>-->
-			<!--<artifactId>updatesite-fiji</artifactId>-->
-			<!--<version>0.1.0-SNAPSHOT</version>-->
-			<!--<type>pom</type>-->
-		<!--</dependency>-->
-		<!--<dependency>-->
-			<!--<groupId>net.imagej</groupId>-->
-			<!--<artifactId>updatesite-csbdeep</artifactId>-->
-			<!--<version>0.1.0-SNAPSHOT</version>-->
-			<!--<type>pom</type>-->
-		<!--</dependency>-->
-	<!--</dependencies>-->
 
 	<build>
 		<plugins>
