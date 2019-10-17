@@ -13,6 +13,7 @@ import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 import org.apache.maven.model.io.xpp3.MavenXpp3Writer;
 import org.codehaus.plexus.classworlds.ClassWorld;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
+import org.eclipse.jgit.api.errors.GitAPIException;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -55,6 +56,12 @@ public class AbstractMavenApp {
 
 	void setBaseDir(File baseDirectory) {
 		versioning.setBaseDirectory(baseDirectory);
+		try {
+			versioning.forceCommitCurrentChanges();
+			versioning.copyCurrentSession("base");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	File getBaseDir() {
@@ -92,8 +99,13 @@ public class AbstractMavenApp {
 	}
 
 	void installFromPOM(File pom) throws Exception {
-		runMaven(pom, "scijava:copy-jars",
-				"scijavaclone:extract-resources",
+		System.out.println("Installing Fiji from POM file " + pom.getAbsolutePath());
+		runMaven(pom,
+//				"scijava:copy-jars",
+//				"scijavaclone:extract-resources",
+				"install",
+//				"-DignoreSnapshots=true",
+				"-Denforcer.skip=true",
 				"-Dscijava.app.directory=" + pom.getParent(),
 				"-Ddelete.other.versions=true");
 		// this is the invocation variant of the maven install
@@ -115,7 +127,9 @@ public class AbstractMavenApp {
 //		} catch (MavenInvocationException e) {
 //			e.printStackTrace();
 //		}
+		System.out.println("Done building Fiji, saving changes");
 		getVersioning().commitCurrentChanges();
+		System.out.println("Done saving changes");
 	}
 
 	public void runMaven(File pom, String... args) {

@@ -12,7 +12,7 @@ import java.util.List;
 public class MavenInstallerWindow extends AbstractMavenAppWindow {
 
 	private final MavenInstaller parent;
-	private File sourceDir;
+	private boolean downloadJava;
 	private File destinationDir;
 	private List<UpdateSite> sites;
 	private JTabbedPane tabs;
@@ -39,8 +39,8 @@ public class MavenInstallerWindow extends AbstractMavenAppWindow {
 		tabs.setUI(tabbedPaneUI);
 		tabs.setForeground(Color.black);
 		tabs.setEnabled(false);
-		tabs.addTab("Source", new InstallerSourceView(this));
 		tabs.addTab("Destination", new InstallerDestinationView(this));
+		tabs.addTab("Java", new InstallerJavaView(this));
 		tabs.addTab("Components", new InstallerComponentsView(this));
 		progressView = new InstallerProgressView(this);
 		tabs.addTab("Installation", progressView);
@@ -51,20 +51,14 @@ public class MavenInstallerWindow extends AbstractMavenAppWindow {
 		tabs.setSelectedIndex(0);
 	}
 
-	public void chooseComponents(File source, File destination) {
-		sourceDir = source;
+	public void chooseComponents(File destination) {
 		destinationDir = destination;
-		tabs.setSelectedIndex(2);
-	}
-
-	void sourceChosen(File dir) {
-		sourceDir = dir;
 		tabs.setSelectedIndex(1);
 	}
 
 	void destinationChosen(File dir) {
 		destinationDir = dir;
-		tabs.setSelectedIndex(2);
+		tabs.setSelectedIndex(1);
 	}
 
 	void componentsChosen(List<UpdateSite> sites) {
@@ -84,7 +78,7 @@ public class MavenInstallerWindow extends AbstractMavenAppWindow {
 		}
 		try {
 			progressView.setStatus("Installing Fiji via Maven...");
-			parent.createMavenInstallation(sourceDir, destinationDir, sites);
+			parent.createMavenInstallation(destinationDir, downloadJava, sites);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -97,5 +91,10 @@ public class MavenInstallerWindow extends AbstractMavenAppWindow {
 	public void switchToUpdater() {
 		parent.launchUpdater();
 		dispose();
+	}
+
+	public void javaChosen(boolean downloadJava) {
+		this.downloadJava = downloadJava;
+		tabs.setSelectedIndex(2);
 	}
 }

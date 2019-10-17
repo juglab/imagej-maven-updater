@@ -16,6 +16,68 @@
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+	<name>Fiji</name>
+	<description>Fiji</description>
+	<url>https://imagej.net/</url>
+	<inceptionYear>2019</inceptionYear>
+	<organization>
+		<name>CSBD | MPI-CBG</name>
+		<url>https://csbdresden.de/</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>Simplified BSD License</name>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>None</id>
+			<name>None</name>
+			<roles>
+				<role>founder</role>
+				<role>lead</role>
+				<role>developer</role>
+				<role>debugger</role>
+				<role>reviewer</role>
+				<role>support</role>
+				<role>maintainer</role>
+			</roles>
+		</developer>
+	</developers>
+	<contributors>
+		<contributor>
+			<name>None</name>
+		</contributor>
+	</contributors>
+
+	<mailingLists>
+		<mailingList>
+			<name>Image.sc Forum</name>
+			<archive>https://forum.image.sc/tags/imagej</archive>
+		</mailingList>
+	</mailingLists>
+
+	<scm>
+		<connection>scm:git:git://github.com/juglab/updatesite-imagej</connection>
+		<developerConnection>scm:git:git@github.com:juglab/updatesite-imagej</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/juglab/updatesite-imagej</url>
+	</scm>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/fiji/fiji/issues</url>
+	</issueManagement>
+	<ciManagement>
+		<system>None</system>
+	</ciManagement>
+
+	<properties>
+		<license.licenseName>bsd_2</license.licenseName>
+		<license.copyrightOwners>Jug Lab</license.copyrightOwners>
+	</properties>
+
 	<repositories>
 		<repository>
 			<id>scijava.public</id>
@@ -26,6 +88,14 @@
 			<url>https://dais-maven.mpi-cbg.de/repository/test-maven/</url>
 		</repository>
 	</repositories>
+
+<!--	<dependencies>-->
+<!--		<dependency>-->
+<!--			<groupId>net.imagej</groupId>-->
+<!--			<artifactId>imagej-launcher</artifactId>-->
+<!--			<classifier>linux64</classifier>-->
+<!--		</dependency>-->
+<!--	</dependencies>-->
 
 	<build>
 		<plugins>

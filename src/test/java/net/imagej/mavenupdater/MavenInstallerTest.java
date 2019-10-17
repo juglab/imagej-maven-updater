@@ -24,37 +24,26 @@ public class MavenInstallerTest {
 	public TemporaryFolder destinationFolder = new TemporaryFolder();
 
 	@Test
-	public void installFromExistingFiji() throws Exception {
-
-		//create dummy files simulating existing installation
-		new File(sourceFolder.newFolder("jars"), "lib.jar").createNewFile();
-		new File(sourceFolder.newFolder("java"), "release").createNewFile();
+	public void install() throws Exception {
 
 		//init installer
 		MavenInstaller installer = new MavenInstaller();
 
-		//copy fiji into new maven installation directory
-		installer.copyFiji(sourceFolder.getRoot(), destinationFolder.getRoot());
+		installer.setBaseDir(destinationFolder.getRoot());
 
-		//test if a new git branch got initialized and if the files got copied
+		//test if a new git branch got initialized
 		assertEquals("base", installer.getVersioning().getCurrentSession().toString());
+
 		File[] files = destinationFolder.getRoot().listFiles();
 		Arrays.sort(files);
-		assertEquals(3, files.length);
+		assertEquals(1, files.length);
 		assertEquals(".git", files[0].getName());
-		assertEquals("jars", files[1].getName());
-		assertEquals("java", files[2].getName());
 
 		//create new branch for maven installation
 		installer.prepareMavenBranch();
 
-		//check if new branch got created and if everything bit /java and /.git got deleted
+		//check if new branch got created
 		assertEquals("update", installer.getVersioning().getCurrentSession().toString());
-		files = destinationFolder.getRoot().listFiles();
-		Arrays.sort(files);
-		assertEquals(2, files.length);
-		assertEquals(".git", files[0].getName());
-		assertEquals("java", files[1].getName());
 
 		//activate all available update sites
 		List<UpdateSite> availableSites = installer.getAvailableUpdateSites();
@@ -77,6 +66,17 @@ public class MavenInstallerTest {
 
 		assertFalse(installer.getVersioning().hasUnsavedChanges());
 
+	}
+
+	@Test
+	public void testClassPath() throws IOException {
+		destinationFolder.newFolder("lib").mkdirs();
+		destinationFolder.newFolder("lab").mkdirs();
+		destinationFolder.newFile("lab/a.jar");
+		destinationFolder.newFile("a.jar");
+		String classpath = new MavenInstaller().getClassPath(destinationFolder.getRoot(), ":");
+		String root = destinationFolder.getRoot().getAbsolutePath();
+		assertEquals(root + "/*:" + root + "/lab/*", classpath);
 	}
 
 }

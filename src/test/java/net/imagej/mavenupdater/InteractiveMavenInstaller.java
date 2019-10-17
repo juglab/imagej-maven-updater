@@ -20,6 +20,6 @@ public class InteractiveMavenInstaller {
 
 		//init updater
 		MavenInstaller installer = new MavenInstaller();
-		installer.install(source.toFile(), destination.toFile());
+		installer.install(destination.toFile());
 	}
 }

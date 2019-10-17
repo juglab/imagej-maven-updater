@@ -27,7 +27,7 @@ public class MavenUpdaterTest {
 		MavenInstaller installer = new MavenInstaller();
 		List<UpdateSite> availableSites = AvailableSites.get();
 		availableSites.forEach(site -> site.setActive(true));
-		installer.createMavenInstallation(sourceFolder.getRoot(), destinationFolder.getRoot(), availableSites);
+		installer.createMavenInstallation(destinationFolder.getRoot(), false, availableSites);
 
 		MavenUpdater updater = new MavenUpdater(destinationFolder.getRoot().getAbsolutePath());
 		updater.loadLocalInstallation();
@@ -50,7 +50,7 @@ public class MavenUpdaterTest {
 		//install
 		MavenInstaller installer = new MavenInstaller();
 		List<UpdateSite> availableSites = AvailableSites.get();
-		installer.createMavenInstallation(sourceFolder.getRoot(), destinationFolder.getRoot(), availableSites);
+		installer.createMavenInstallation(destinationFolder.getRoot(), false, availableSites);
 
 		MavenUpdater updater = new MavenUpdater(destinationFolder.getRoot().getAbsolutePath());
 		updater.loadLocalInstallation();

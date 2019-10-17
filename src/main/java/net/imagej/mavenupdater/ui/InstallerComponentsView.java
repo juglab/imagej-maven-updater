@@ -31,7 +31,7 @@ public class InstallerComponentsView extends JPanel {
 	}
 
 	private void createComponentsChoice(List<UpdateSite> availableUpdateSites) {
-		add(new JLabel("<html>I will now steal the java folder and executable from the provided Fiji and get the rest via maven.<br/>What exactly should I download?"), "wrap, span");
+		add(new JLabel("<html>What exactly should be installed?"), "wrap, span");
 
 		JTable updateSites = new JTable();
 		updateSites.setModel(new UpdateSiteTableModel(availableUpdateSites));
