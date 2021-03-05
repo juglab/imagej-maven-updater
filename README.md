@@ -87,7 +87,7 @@ This requires that people can easily deploy their project to a maven server. Thi
 In this case the ImageJ uploader could build a POM including all files the user added to ImageJ as resources and upload that to our Maven server. This is not implemented at all yet. It could also be used to migrate existing update sites from the known format into Maven update sites.
 
 ## So can you build a whole Fiji from Maven?
-I believe so - the installer will ask the user if they want to use their system JDK, otherwise it will download the latest version. It also writes launchers - the only one tested is the linux launcher.
+I believe so - the installer will ask the user if they want to use their system JDK, otherwise it will download the latest version. It also writes very basic executables - the only one tested is the linux launcher.
 
 ## Why are there so many GIT commands printed to the console?
 In the background I use JGIT to manage the files / compare the local installation and an updated installation etc.. I'm sure there is a better (and more performant) way to do this, but since I wrote the GIT part earlier with a different use case in mind, this was the easiest to just use for this prototype.
